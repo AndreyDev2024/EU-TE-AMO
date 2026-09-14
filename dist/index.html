@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nossa historia</title>
+    <meta
+      name="description"
+      content="Uma historia interativa, romantica e feita para um pedido especial."
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23170f16'/%3E%3Cpath d='M32 49s-18-10.8-18-24.2C14 17.4 18.8 13 24.8 13c3.5 0 6.1 1.8 7.2 3.7C33.1 14.8 35.7 13 39.2 13 45.2 13 50 17.4 50 24.8 50 38.2 32 49 32 49z' fill='%23ff6f9c'/%3E%3Cpath d='M22 25c0-3.4 2-5.4 5.2-5.4' fill='none' stroke='%23fff3e7' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="story-shell" aria-live="polite">
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+
+      <section class="stage" data-page="0">
+        <p class="eyebrow">para voce</p>
+        <h1>Eu queria te contar uma historia.</h1>
+        <p>
+          Nao daquelas que cabem em uma mensagem qualquer. Uma historia sobre
+          como, aos poucos, voce virou um dos meus lugares favoritos no mundo.
+        </p>
+        <button class="primary" data-next>abrir a primeira pagina</button>
+      </section>
+
+      <section class="stage" data-page="1" hidden>
+        <p class="eyebrow">capitulo 1</p>
+        <h2>Antes de voce perceber</h2>
+        <p>
+          Teve um momento em que eu comecei a sorrir diferente quando pensava em
+          voce. Talvez tenha sido em uma conversa simples, talvez em um olhar,
+          talvez naquele jeito seu de deixar tudo mais leve.
+        </p>
+        <div class="memory-card">
+          <span>memoria para preencher</span>
+          <strong>O dia em que eu pensei: tem algo especial aqui.</strong>
+        </div>
+        <button class="primary" data-next>continuar</button>
+      </section>
+
+      <section class="stage" data-page="2" hidden>
+        <p class="eyebrow">capitulo 2</p>
+        <h2>O que eu fui guardando</h2>
+        <div class="constellation" aria-label="Pequenas razoes pelas quais eu gosto de voce">
+          <button data-note="Seu jeito de cuidar sem fazer barulho.">cuidado</button>
+          <button data-note="A paz que chega quando voce esta perto.">paz</button>
+          <button data-note="As risadas que ficam comigo depois.">risadas</button>
+          <button data-note="A vontade de te escolher de novo.">escolha</button>
+        </div>
+        <p class="note-output" id="noteOutput">Toque em uma palavra.</p>
+        <button class="primary" data-next>proxima pagina</button>
+      </section>
+
+      <section class="stage" data-page="3" hidden>
+        <p class="eyebrow">capitulo 3</p>
+        <h2>Se eu pudesse pausar o mundo</h2>
+        <p>
+          Eu pausaria em um instante nosso. Um daqueles em que nada precisa ser
+          perfeito para ser inesquecivel. So a gente, o tempo mais devagar, e a
+          certeza bonita de que estar contigo faz sentido.
+        </p>
+        <label class="wish">
+          <span>Escreva aqui um lugar, uma data ou um momento de voces</span>
+          <input id="wishInput" type="text" placeholder="ex: nosso primeiro encontro" />
+        </label>
+        <p class="wish-line" id="wishLine">Esse momento vai virar parte da historia.</p>
+        <button class="primary" data-next>guardar esse momento</button>
+      </section>
+
+      <section class="stage" data-page="4" hidden>
+        <p class="eyebrow">capitulo 4</p>
+        <h2>Entao eu quero te perguntar</h2>
+        <p>
+          Com carinho, com verdade, e com aquela coragem boa de quem encontrou
+          alguem que vale a pena escolher:
+        </p>
+        <div class="proposal">
+          <span>voce aceita viver essa historia comigo?</span>
+          <strong>Quer namorar comigo?</strong>
+        </div>
+        <div class="answer-row">
+          <button class="yes" data-yes>sim</button>
+          <button class="soft" data-next>ainda quero ler o final</button>
+        </div>
+      </section>
+
+      <section class="stage finale" data-page="5" hidden>
+        <p class="eyebrow">final</p>
+        <h2 id="finalTitle">Eu prometo cuidar do que a gente construir.</h2>
+        <p>
+          Prometo estar presente, rir contigo, aprender contigo, respeitar seus
+          tempos e fazer do nosso amor uma casa bonita de morar.
+        </p>
+        <div class="questions">
+          <h3>Proximas perguntas para personalizar</h3>
+          <ul>
+            <li>Qual foi a primeira memoria que voce quer colocar?</li>
+            <li>Quais apelidos, piadas internas ou musicas entram na historia?</li>
+            <li>Que pergunta final voce quer exatamente: namoro, aliança, surpresa?</li>
+          </ul>
+        </div>
+        <button class="primary" data-restart>reler desde o comeco</button>
+      </section>
+
+      <nav class="pager" aria-label="Paginas da historia">
+        <button data-jump="0" aria-label="Ir para a pagina 1" class="active"></button>
+        <button data-jump="1" aria-label="Ir para a pagina 2"></button>
+        <button data-jump="2" aria-label="Ir para a pagina 3"></button>
+        <button data-jump="3" aria-label="Ir para a pagina 4"></button>
+        <button data-jump="4" aria-label="Ir para a pagina 5"></button>
+        <button data-jump="5" aria-label="Ir para a pagina final"></button>
+      </nav>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
