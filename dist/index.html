@@ -19,63 +19,166 @@
     <main class="story-shell" aria-live="polite">
       <div class="ambient ambient-one"></div>
       <div class="ambient ambient-two"></div>
+      <div class="petals" aria-hidden="true"></div>
 
-      <section class="stage" data-page="0">
+      <section class="stage cover" data-page="0">
         <p class="eyebrow">para voce</p>
-        <h1>Eu queria te contar uma historia.</h1>
+        <h1>Eu queria te contar a nossa historia.</h1>
         <p>
-          Nao daquelas que cabem em uma mensagem qualquer. Uma historia sobre
-          como, aos poucos, voce virou um dos meus lugares favoritos no mundo.
+          Nao como quem quer impressionar. Como quem quer guardar com carinho
+          cada detalhe que me fez chegar ate aqui.
         </p>
         <button class="primary" data-next>abrir a primeira pagina</button>
       </section>
 
       <section class="stage" data-page="1" hidden>
         <p class="eyebrow">capitulo 1</p>
-        <h2>Antes de voce perceber</h2>
+        <h2>Desde 23 de julho</h2>
         <p>
-          Teve um momento em que eu comecei a sorrir diferente quando pensava em
-          voce. Talvez tenha sido em uma conversa simples, talvez em um olhar,
-          talvez naquele jeito seu de deixar tudo mais leve.
+          Foi nesse dia que a conversa comecou. E, sem fazer barulho, uma
+          parte bonita da minha vida tambem comecou ali.
         </p>
-        <div class="memory-card">
-          <span>memoria para preencher</span>
-          <strong>O dia em que eu pensei: tem algo especial aqui.</strong>
+        <div class="counter-grid" aria-label="Contador desde que voces comecaram a conversar">
+          <div><strong id="monthsKnown">0</strong><span>meses</span></div>
+          <div><strong id="daysKnown">0</strong><span>dias</span></div>
+          <div><strong id="hoursKnown">0</strong><span>horas</span></div>
+          <div><strong id="minutesKnown">0</strong><span>minutos</span></div>
+          <div><strong id="secondsKnown">0</strong><span>segundos</span></div>
         </div>
+        <p class="wish-line" id="twoMonthLine">
+          Dia 23 de setembro de 2026 a gente completa 2 meses de conversa.
+        </p>
         <button class="primary" data-next>continuar</button>
       </section>
 
       <section class="stage" data-page="2" hidden>
         <p class="eyebrow">capitulo 2</p>
+        <h2>Antes de voce perceber</h2>
+        <p>
+          Teve um momento em que eu comecei a sorrir diferente quando pensava em
+          voce. Talvez tenha sido em uma conversa simples, talvez no seu jeito
+          de transformar um dia comum em algo mais leve.
+        </p>
+        <label class="field-card">
+          <span>uma memoria real para colocar aqui</span>
+          <input data-save="memoryOne" type="text" placeholder="ex: a primeira conversa que marcou" />
+        </label>
+        <button class="primary" data-next>virar a pagina</button>
+      </section>
+
+      <section class="stage" data-page="3" hidden>
+        <p class="eyebrow">capitulo 3</p>
         <h2>O que eu fui guardando</h2>
         <div class="constellation" aria-label="Pequenas razoes pelas quais eu gosto de voce">
-          <button data-note="Seu jeito de cuidar sem fazer barulho.">cuidado</button>
-          <button data-note="A paz que chega quando voce esta perto.">paz</button>
+          <button data-note="Seu jeito de cuidar sem precisar anunciar.">cuidado</button>
+          <button data-note="A paz que chega quando voce aparece.">paz</button>
           <button data-note="As risadas que ficam comigo depois.">risadas</button>
           <button data-note="A vontade de te escolher de novo.">escolha</button>
+          <button data-note="Seu olhar, seu jeito, sua presenca.">presenca</button>
+          <button data-note="A forma como voce faz o simples parecer especial.">detalhes</button>
         </div>
         <p class="note-output" id="noteOutput">Toque em uma palavra.</p>
         <button class="primary" data-next>proxima pagina</button>
       </section>
 
-      <section class="stage" data-page="3" hidden>
-        <p class="eyebrow">capitulo 3</p>
-        <h2>Se eu pudesse pausar o mundo</h2>
+      <section class="stage" data-page="4" hidden>
+        <p class="eyebrow">capitulo 4</p>
+        <h2>As coisas que ela gosta</h2>
         <p>
-          Eu pausaria em um instante nosso. Um daqueles em que nada precisa ser
-          perfeito para ser inesquecivel. So a gente, o tempo mais devagar, e a
-          certeza bonita de que estar contigo faz sentido.
+          Porque amar tambem e reparar. E eu quero lembrar das coisas que fazem
+          seus olhos brilharem.
         </p>
-        <label class="wish">
-          <span>Escreva aqui um lugar, uma data ou um momento de voces</span>
-          <input id="wishInput" type="text" placeholder="ex: nosso primeiro encontro" />
+        <div class="editable-list">
+          <label><span>comida ou doce favorito</span><input data-save="likesFood" placeholder="escreva aqui" /></label>
+          <label><span>lugar que ela ama</span><input data-save="likesPlace" placeholder="escreva aqui" /></label>
+          <label><span>coisa pequena que deixa ela feliz</span><input data-save="likesSmall" placeholder="escreva aqui" /></label>
+        </div>
+        <button class="primary" data-next>guardar esses detalhes</button>
+      </section>
+
+      <section class="stage" data-page="5" hidden>
+        <p class="eyebrow">capitulo 5</p>
+        <h2>Uma pagina para musicas</h2>
+        <p>
+          Toda historia de amor tem uma trilha. Aqui entram as musicas que
+          lembram voces dois, as que ela gosta, ou aquela que toca e da vontade
+          de mandar para ela.
+        </p>
+        <div class="music-list">
+          <label><span>musica 1</span><input data-save="songOne" placeholder="nome da musica ou link" /></label>
+          <label><span>musica 2</span><input data-save="songTwo" placeholder="nome da musica ou link" /></label>
+          <label><span>musica 3</span><input data-save="songThree" placeholder="nome da musica ou link" /></label>
+        </div>
+        <button class="primary" data-next>deixar tocando no coracao</button>
+      </section>
+
+      <section class="stage" data-page="6" hidden>
+        <p class="eyebrow">capitulo 6</p>
+        <h2>Frases para abencoar a gente</h2>
+        <p>
+          Um amor bonito tambem pode ser entregue a Deus com cuidado, gratidao e
+          respeito.
+        </p>
+        <div class="verse-stack">
+          <blockquote>
+            "Acima de tudo, porem, revistam-se do amor, que e o elo perfeito."
+            <cite>Colossenses 3:14</cite>
+          </blockquote>
+          <label class="field-card">
+            <span>outra frase biblica para colocar</span>
+            <input data-save="bibleVerse" placeholder="ex: 1 Corintios 13..." />
+          </label>
+        </div>
+        <button class="primary" data-next>seguir com fe</button>
+      </section>
+
+      <section class="stage" data-page="7" hidden>
+        <p class="eyebrow">capitulo 7</p>
+        <h2>O futuro que eu espero</h2>
+        <p>
+          Eu imagino um futuro com conversa sincera, oracao, risadas, planos
+          simples e uma vontade constante de cuidar bem de voce.
+        </p>
+        <div class="future-path">
+          <button data-future="Encontros leves, daqueles que a gente nem quer ir embora.">encontros</button>
+          <button data-future="Planos feitos com calma, respeito e parceria.">planos</button>
+          <button data-future="Dias dificeis enfrentados de maos dadas.">cuidado</button>
+          <button data-future="Uma historia que cresce com Deus no centro.">fe</button>
+        </div>
+        <p class="note-output" id="futureOutput">Escolha uma parte do futuro.</p>
+        <button class="primary" data-next>eu quero esse futuro</button>
+      </section>
+
+      <section class="stage" data-page="8" hidden>
+        <p class="eyebrow">capitulo 8</p>
+        <h2>Pequenas promessas</h2>
+        <div class="promise-grid">
+          <div><span>01</span><strong>Te ouvir com paciencia.</strong></div>
+          <div><span>02</span><strong>Respeitar seu tempo e seu coracao.</strong></div>
+          <div><span>03</span><strong>Celebrar suas conquistas como se fossem minhas.</strong></div>
+          <div><span>04</span><strong>Escolher voce tambem nos dias comuns.</strong></div>
+        </div>
+        <button class="primary" data-next>continuar</button>
+      </section>
+
+      <section class="stage" data-page="9" hidden>
+        <p class="eyebrow">capitulo 9</p>
+        <h2>Um lugar nosso</h2>
+        <p>
+          Se eu pudesse pausar o mundo, escolheria um instante em que nada
+          precisa ser perfeito: so a gente, o tempo mais devagar, e a certeza de
+          que estar contigo faz sentido.
+        </p>
+        <label class="field-card">
+          <span>lugar, data ou momento de voces</span>
+          <input id="wishInput" data-save="wishMoment" type="text" placeholder="ex: nosso primeiro encontro" />
         </label>
         <p class="wish-line" id="wishLine">Esse momento vai virar parte da historia.</p>
         <button class="primary" data-next>guardar esse momento</button>
       </section>
 
-      <section class="stage" data-page="4" hidden>
-        <p class="eyebrow">capitulo 4</p>
+      <section class="stage proposal-page" data-page="10" hidden>
+        <p class="eyebrow">capitulo 10</p>
         <h2>Entao eu quero te perguntar</h2>
         <p>
           Com carinho, com verdade, e com aquela coragem boa de quem encontrou
@@ -91,7 +194,7 @@
         </div>
       </section>
 
-      <section class="stage finale" data-page="5" hidden>
+      <section class="stage finale" data-page="11" hidden>
         <p class="eyebrow">final</p>
         <h2 id="finalTitle">Eu prometo cuidar do que a gente construir.</h2>
         <p>
@@ -99,24 +202,18 @@
           tempos e fazer do nosso amor uma casa bonita de morar.
         </p>
         <div class="questions">
-          <h3>Proximas perguntas para personalizar</h3>
+          <h3>Coisas que ainda da para personalizar</h3>
           <ul>
-            <li>Qual foi a primeira memoria que voce quer colocar?</li>
-            <li>Quais apelidos, piadas internas ou musicas entram na historia?</li>
-            <li>Que pergunta final voce quer exatamente: namoro, aliança, surpresa?</li>
+            <li>Nome dela e apelido carinhoso.</li>
+            <li>Fotos, musicas e versiculos preferidos.</li>
+            <li>A memoria exata do primeiro dia que conversaram.</li>
+            <li>O texto final do pedido, com o seu jeito de falar.</li>
           </ul>
         </div>
         <button class="primary" data-restart>reler desde o comeco</button>
       </section>
 
-      <nav class="pager" aria-label="Paginas da historia">
-        <button data-jump="0" aria-label="Ir para a pagina 1" class="active"></button>
-        <button data-jump="1" aria-label="Ir para a pagina 2"></button>
-        <button data-jump="2" aria-label="Ir para a pagina 3"></button>
-        <button data-jump="3" aria-label="Ir para a pagina 4"></button>
-        <button data-jump="4" aria-label="Ir para a pagina 5"></button>
-        <button data-jump="5" aria-label="Ir para a pagina final"></button>
-      </nav>
+      <nav class="pager" aria-label="Paginas da historia"></nav>
     </main>
 
     <script src="./script.js"></script>
