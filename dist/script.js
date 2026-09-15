@@ -1,13 +1,6 @@
 const pages = [...document.querySelectorAll(".stage")];
 const pager = document.querySelector(".pager");
-const noteOutput = document.querySelector("#noteOutput");
-const futureOutput = document.querySelector("#futureOutput");
-const wishInput = document.querySelector("#wishInput");
-const wishLine = document.querySelector("#wishLine");
-const finalTitle = document.querySelector("#finalTitle");
-
 const startDate = new Date("2026-07-23T00:00:00-03:00");
-const twoMonthDate = new Date("2026-09-23T00:00:00-03:00");
 let currentPage = 0;
 
 pages.forEach((_, index) => {
@@ -35,56 +28,33 @@ function showPage(index) {
   });
 }
 
-function diffCalendar(from, to) {
+function fullMonthsBetween(from, to) {
   let months =
     (to.getFullYear() - from.getFullYear()) * 12 +
     (to.getMonth() - from.getMonth());
 
   const monthAnchor = new Date(from);
   monthAnchor.setMonth(from.getMonth() + months);
-  if (monthAnchor > to) {
-    months -= 1;
-    monthAnchor.setMonth(from.getMonth() + months);
-  }
-
-  const remainder = Math.max(0, to - monthAnchor);
-  const days = Math.floor(remainder / 86400000);
-  const hours = Math.floor((remainder % 86400000) / 3600000);
-  const minutes = Math.floor((remainder % 3600000) / 60000);
-  const seconds = Math.floor((remainder % 60000) / 1000);
-
-  return { months, days, hours, minutes, seconds };
+  if (monthAnchor > to) months -= 1;
+  return Math.max(0, months);
 }
 
 function updateCounter() {
   const now = new Date();
-  const known = diffCalendar(startDate, now);
-  document.querySelector("#monthsKnown").textContent = known.months;
-  document.querySelector("#daysKnown").textContent = known.days;
-  document.querySelector("#hoursKnown").textContent = known.hours;
-  document.querySelector("#minutesKnown").textContent = known.minutes;
-  document.querySelector("#secondsKnown").textContent = known.seconds;
+  const totalMs = Math.max(0, now - startDate);
+  const seconds = Math.floor(totalMs / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  const weeks = Math.floor(days / 7);
+  const months = fullMonthsBetween(startDate, now);
 
-  const line = document.querySelector("#twoMonthLine");
-  if (now < twoMonthDate) {
-    const totalMs = twoMonthDate - now;
-    const days = Math.floor(totalMs / 86400000);
-    const hours = Math.floor((totalMs % 86400000) / 3600000);
-    const minutes = Math.floor((totalMs % 3600000) / 60000);
-    line.textContent = `Faltam ${days} dias, ${hours} horas e ${minutes} minutos para os 2 meses.`;
-  } else {
-    line.textContent = "Dia 23 de setembro de 2026: a gente completou 2 meses de conversa.";
-  }
-}
-
-function saveEditableFields() {
-  document.querySelectorAll("[data-save]").forEach((field) => {
-    const key = `pedido-romantico:${field.dataset.save}`;
-    field.value = localStorage.getItem(key) || "";
-    field.addEventListener("input", () => {
-      localStorage.setItem(key, field.value);
-    });
-  });
+  document.querySelector("#monthsKnown").textContent = months;
+  document.querySelector("#weeksKnown").textContent = weeks;
+  document.querySelector("#daysKnown").textContent = days;
+  document.querySelector("#hoursKnown").textContent = hours;
+  document.querySelector("#minutesKnown").textContent = minutes;
+  document.querySelector("#secondsKnown").textContent = seconds;
 }
 
 document.querySelectorAll("[data-next]").forEach((button) => {
@@ -97,32 +67,25 @@ dots.forEach((dot) => {
 
 document.querySelector("[data-restart]").addEventListener("click", () => showPage(0));
 
-document.querySelectorAll("[data-note]").forEach((button) => {
+const topicImage = document.querySelector("#topicImage");
+const topicText = document.querySelector("#topicText");
+
+document.querySelectorAll("[data-topic]").forEach((button, index) => {
+  if (index === 0) button.classList.add("active");
   button.addEventListener("click", () => {
-    noteOutput.textContent = button.dataset.note;
+    document.querySelectorAll("[data-topic]").forEach((item) => {
+      item.classList.remove("active");
+    });
+    button.classList.add("active");
+    topicImage.classList.remove("is-missing");
+    topicImage.src = button.dataset.photo;
+    topicImage.alt = `Foto do topico ${button.dataset.topic}`;
+    topicText.textContent = button.dataset.text;
   });
 });
 
-document.querySelectorAll("[data-future]").forEach((button) => {
-  button.addEventListener("click", () => {
-    futureOutput.textContent = button.dataset.future;
-  });
-});
-
-wishInput.addEventListener("input", () => {
-  const value = wishInput.value.trim();
-  wishLine.textContent = value
-    ? `${value} merece uma pagina so dele.`
-    : "Esse momento vai virar parte da historia.";
-});
-
-document.querySelector("[data-yes]").addEventListener("click", () => {
-  const burst = document.createElement("div");
-  burst.className = "burst";
-  document.body.appendChild(burst);
-  finalTitle.textContent = "Agora a nossa historia tem um sim.";
-  showPage(pages.length - 1);
-  window.setTimeout(() => burst.remove(), 950);
+topicImage.addEventListener("error", () => {
+  topicImage.classList.add("is-missing");
 });
 
 document.addEventListener("keydown", (event) => {
@@ -130,6 +93,5 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowLeft") showPage(currentPage - 1);
 });
 
-saveEditableFields();
 updateCounter();
 window.setInterval(updateCounter, 1000);

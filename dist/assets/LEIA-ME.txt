@@ -1,0 +1,13 @@
+Coloque seus arquivos aqui com estes nomes para o site carregar automaticamente:
+
+- abertura-dragon-ball-gt.mp3
+- foto-cuidado.jpg
+- foto-paz.jpg
+- foto-risadas.jpg
+- foto-escolha.jpg
+- foto-presenca.jpg
+- foto-detalhes.jpg
+
+Os outros espacos de foto estao como molduras visuais no HTML.
+Para usar imagens reais neles, troque a div .photo-frame por uma imagem ou aplique
+background-image no CSS/HTML.

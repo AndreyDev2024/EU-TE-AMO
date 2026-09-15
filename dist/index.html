@@ -6,7 +6,7 @@
     <title>Nossa historia</title>
     <meta
       name="description"
-      content="Uma historia interativa, romantica e feita para um pedido especial."
+      content="Uma historia romantica, com fotos, musica e um pedido especial."
     />
     <link
       rel="icon"
@@ -22,12 +22,15 @@
       <div class="petals" aria-hidden="true"></div>
 
       <section class="stage cover" data-page="0">
-        <p class="eyebrow">para voce</p>
-        <h1>Eu queria te contar a nossa historia.</h1>
-        <p>
-          Nao como quem quer impressionar. Como quem quer guardar com carinho
-          cada detalhe que me fez chegar ate aqui.
-        </p>
+        <div class="photo-frame hero-photo" data-photo="coloque aqui uma foto nossa"></div>
+        <div>
+          <p class="eyebrow">para voce</p>
+          <h1>Eu queria te contar a nossa historia.</h1>
+          <p>
+            Nao como quem quer impressionar. Como quem quer guardar com carinho
+            cada detalhe que me fez chegar ate aqui.
+          </p>
+        </div>
         <button class="primary" data-next>abrir a primeira pagina</button>
       </section>
 
@@ -35,146 +38,175 @@
         <p class="eyebrow">capitulo 1</p>
         <h2>Desde 23 de julho</h2>
         <p>
-          Foi nesse dia que a conversa comecou. E, sem fazer barulho, uma
-          parte bonita da minha vida tambem comecou ali.
+          Desde o dia em que a gente comecou a conversar, alguma coisa em mim
+          passou a esperar suas mensagens com um carinho diferente.
         </p>
-        <div class="counter-grid" aria-label="Contador desde que voces comecaram a conversar">
-          <div><strong id="monthsKnown">0</strong><span>meses</span></div>
-          <div><strong id="daysKnown">0</strong><span>dias</span></div>
-          <div><strong id="hoursKnown">0</strong><span>horas</span></div>
-          <div><strong id="minutesKnown">0</strong><span>minutos</span></div>
-          <div><strong id="secondsKnown">0</strong><span>segundos</span></div>
+        <div class="elapsed" aria-label="Tempo desde que voces se conhecem">
+          <div><span>faz</span><strong id="monthsKnown">0</strong><small>meses</small></div>
+          <div><span>faz</span><strong id="weeksKnown">0</strong><small>semanas</small></div>
+          <div><span>faz</span><strong id="daysKnown">0</strong><small>dias</small></div>
+          <div><span>faz</span><strong id="hoursKnown">0</strong><small>horas</small></div>
+          <div><span>faz</span><strong id="minutesKnown">0</strong><small>minutos</small></div>
+          <div><span>faz</span><strong id="secondsKnown">0</strong><small>segundos</small></div>
         </div>
-        <p class="wish-line" id="twoMonthLine">
-          Dia 23 de setembro de 2026 a gente completa 2 meses de conversa.
-        </p>
+        <p class="gold-line">Tudo isso contando o mesmo tempo, so em jeitos diferentes.</p>
         <button class="primary" data-next>continuar</button>
       </section>
 
-      <section class="stage" data-page="2" hidden>
-        <p class="eyebrow">capitulo 2</p>
-        <h2>Antes de voce perceber</h2>
-        <p>
-          Teve um momento em que eu comecei a sorrir diferente quando pensava em
-          voce. Talvez tenha sido em uma conversa simples, talvez no seu jeito
-          de transformar um dia comum em algo mais leve.
-        </p>
-        <label class="field-card">
-          <span>uma memoria real para colocar aqui</span>
-          <input data-save="memoryOne" type="text" placeholder="ex: a primeira conversa que marcou" />
-        </label>
+      <section class="stage split" data-page="2" hidden>
+        <div>
+          <p class="eyebrow">capitulo 2</p>
+          <h2>O que eu sinto por voce</h2>
+          <p>
+            Eu gosto do jeito que voce chegou sem forcar nada e, mesmo assim,
+            ficou. Gosto da paz que sua presenca me traz, da vontade que eu
+            tenho de te cuidar e da alegria simples de poder falar com voce.
+          </p>
+          <div class="text-space">
+            <span>espaco para escrever no codigo</span>
+            <strong>Trocar este texto por aquilo que voce sente de verdade.</strong>
+          </div>
+        </div>
+        <div class="photo-frame tall-photo" data-photo="foto dela ou de voces"></div>
         <button class="primary" data-next>virar a pagina</button>
       </section>
 
       <section class="stage" data-page="3" hidden>
         <p class="eyebrow">capitulo 3</p>
         <h2>O que eu fui guardando</h2>
-        <div class="constellation" aria-label="Pequenas razoes pelas quais eu gosto de voce">
-          <button data-note="Seu jeito de cuidar sem precisar anunciar.">cuidado</button>
-          <button data-note="A paz que chega quando voce aparece.">paz</button>
-          <button data-note="As risadas que ficam comigo depois.">risadas</button>
-          <button data-note="A vontade de te escolher de novo.">escolha</button>
-          <button data-note="Seu olhar, seu jeito, sua presenca.">presenca</button>
-          <button data-note="A forma como voce faz o simples parecer especial.">detalhes</button>
+        <p>
+          Cada palavra aqui pode ter uma foto. Quando ela tocar em um topico,
+          aparece uma lembranca visual desse sentimento.
+        </p>
+        <div class="topic-layout">
+          <div class="topic-buttons" aria-label="Topicos com fotos">
+            <button data-topic="cuidado" data-photo="./assets/foto-cuidado.jpg" data-text="Seu jeito de cuidar sem precisar anunciar.">cuidado</button>
+            <button data-topic="paz" data-photo="./assets/foto-paz.jpg" data-text="A paz que chega quando voce aparece.">paz</button>
+            <button data-topic="risadas" data-photo="./assets/foto-risadas.jpg" data-text="As risadas que ficam comigo depois.">risadas</button>
+            <button data-topic="escolha" data-photo="./assets/foto-escolha.jpg" data-text="A vontade de te escolher de novo.">escolha</button>
+            <button data-topic="presenca" data-photo="./assets/foto-presenca.jpg" data-text="Seu olhar, seu jeito, sua presenca.">presenca</button>
+            <button data-topic="detalhes" data-photo="./assets/foto-detalhes.jpg" data-text="A forma como voce faz o simples parecer especial.">detalhes</button>
+          </div>
+          <figure class="topic-photo">
+            <img id="topicImage" src="./assets/foto-cuidado.jpg" alt="Foto do topico cuidado" />
+            <figcaption id="topicText">Seu jeito de cuidar sem precisar anunciar.</figcaption>
+          </figure>
         </div>
-        <p class="note-output" id="noteOutput">Toque em uma palavra.</p>
         <button class="primary" data-next>proxima pagina</button>
       </section>
 
-      <section class="stage" data-page="4" hidden>
+      <section class="stage gallery-page" data-page="4" hidden>
         <p class="eyebrow">capitulo 4</p>
-        <h2>As coisas que ela gosta</h2>
+        <h2>Lembrancas marcantes</h2>
         <p>
-          Porque amar tambem e reparar. E eu quero lembrar das coisas que fazem
-          seus olhos brilharem.
+          Aqui entram os momentos que mais ficaram no coracao: conversas,
+          prints, lugares, dias especificos, qualquer detalhe que conte a
+          historia de voces dois.
         </p>
-        <div class="editable-list">
-          <label><span>comida ou doce favorito</span><input data-save="likesFood" placeholder="escreva aqui" /></label>
-          <label><span>lugar que ela ama</span><input data-save="likesPlace" placeholder="escreva aqui" /></label>
-          <label><span>coisa pequena que deixa ela feliz</span><input data-save="likesSmall" placeholder="escreva aqui" /></label>
+        <div class="photo-grid">
+          <div class="photo-frame" data-photo="lembranca 1"></div>
+          <div class="photo-frame" data-photo="lembranca 2"></div>
+          <div class="photo-frame" data-photo="lembranca 3"></div>
+          <div class="photo-frame" data-photo="lembranca 4"></div>
         </div>
-        <button class="primary" data-next>guardar esses detalhes</button>
+        <button class="primary" data-next>guardar essas lembrancas</button>
       </section>
 
-      <section class="stage" data-page="5" hidden>
-        <p class="eyebrow">capitulo 5</p>
-        <h2>Uma pagina para musicas</h2>
-        <p>
-          Toda historia de amor tem uma trilha. Aqui entram as musicas que
-          lembram voces dois, as que ela gosta, ou aquela que toca e da vontade
-          de mandar para ela.
-        </p>
-        <div class="music-list">
-          <label><span>musica 1</span><input data-save="songOne" placeholder="nome da musica ou link" /></label>
-          <label><span>musica 2</span><input data-save="songTwo" placeholder="nome da musica ou link" /></label>
-          <label><span>musica 3</span><input data-save="songThree" placeholder="nome da musica ou link" /></label>
+      <section class="stage split" data-page="5" hidden>
+        <div>
+          <p class="eyebrow">capitulo 5</p>
+          <h2>As coisas que ela gosta</h2>
+          <p>
+            Amar tambem e reparar: no que ela gosta de comer, nas musicas que
+            ela repete, no jeito que ela sorri, nos lugares que deixam ela
+            feliz.
+          </p>
+          <div class="text-space">
+            <span>espaco para editar</span>
+            <strong>Colocar aqui as coisas que ela gosta.</strong>
+          </div>
         </div>
-        <button class="primary" data-next>deixar tocando no coracao</button>
+        <div class="photo-frame tall-photo" data-photo="foto dela feliz"></div>
+        <button class="primary" data-next>continuar</button>
       </section>
 
-      <section class="stage" data-page="6" hidden>
+      <section class="stage memory-page" data-page="6" hidden>
         <p class="eyebrow">capitulo 6</p>
-        <h2>Frases para abencoar a gente</h2>
-        <p>
-          Um amor bonito tambem pode ser entregue a Deus com cuidado, gratidao e
-          respeito.
-        </p>
-        <div class="verse-stack">
-          <blockquote>
-            "Acima de tudo, porem, revistam-se do amor, que e o elo perfeito."
-            <cite>Colossenses 3:14</cite>
-          </blockquote>
-          <label class="field-card">
-            <span>outra frase biblica para colocar</span>
-            <input data-save="bibleVerse" placeholder="ex: 1 Corintios 13..." />
-          </label>
+        <h2>O que me lembra voce</h2>
+        <div class="reminds-layout">
+          <div class="photo-frame album-photo" data-photo="foto nossa"></div>
+          <div class="reminds-copy">
+            <p>
+              Tem coisas que, quando aparecem, me fazem lembrar de voce na hora:
+              uma musica, uma frase, uma conversa, um jeito de rir, uma paz.
+            </p>
+            <div class="music-card">
+              <span>musica</span>
+              <strong>Abertura de Dragon Ball GT</strong>
+              <audio controls preload="metadata">
+                <source src="./assets/abertura-dragon-ball-gt.mp3" type="audio/mpeg" />
+              </audio>
+              <small>Coloque o arquivo da musica nesse caminho no codigo.</small>
+            </div>
+          </div>
         </div>
-        <button class="primary" data-next>seguir com fe</button>
+        <button class="primary" data-next>seguir</button>
       </section>
 
       <section class="stage" data-page="7" hidden>
         <p class="eyebrow">capitulo 7</p>
-        <h2>O futuro que eu espero</h2>
+        <h2>Versiculos para abencoar a gente</h2>
         <p>
-          Eu imagino um futuro com conversa sincera, oracao, risadas, planos
-          simples e uma vontade constante de cuidar bem de voce.
+          Um amor bonito tambem pode ser entregue a Deus com cuidado, gratidao e
+          respeito.
         </p>
-        <div class="future-path">
-          <button data-future="Encontros leves, daqueles que a gente nem quer ir embora.">encontros</button>
-          <button data-future="Planos feitos com calma, respeito e parceria.">planos</button>
-          <button data-future="Dias dificeis enfrentados de maos dadas.">cuidado</button>
-          <button data-future="Uma historia que cresce com Deus no centro.">fe</button>
+        <div class="verse-grid">
+          <blockquote>
+            "Acima de tudo, porem, revistam-se do amor, que e o elo perfeito."
+            <cite>Colossenses 3:14</cite>
+          </blockquote>
+          <blockquote>
+            "O amor e paciente, o amor e bondoso."
+            <cite>1 Corintios 13:4</cite>
+          </blockquote>
+          <blockquote>
+            "Assim, permanecem agora estes tres: a fe, a esperanca e o amor."
+            <cite>1 Corintios 13:13</cite>
+          </blockquote>
         </div>
-        <p class="note-output" id="futureOutput">Escolha uma parte do futuro.</p>
+        <button class="primary" data-next>continuar com fe</button>
+      </section>
+
+      <section class="stage split" data-page="8" hidden>
+        <div>
+          <p class="eyebrow">capitulo 8</p>
+          <h2>O futuro que eu espero</h2>
+          <p>
+            Eu imagino um futuro com conversa sincera, oracao, risadas, planos
+            simples e uma vontade constante de cuidar bem de voce.
+          </p>
+          <div class="text-space">
+            <span>espaco para escrever no codigo</span>
+            <strong>Colocar aqui os sonhos, planos e promessas para o futuro.</strong>
+          </div>
+        </div>
+        <div class="photo-frame tall-photo" data-photo="foto para o futuro"></div>
         <button class="primary" data-next>eu quero esse futuro</button>
       </section>
 
-      <section class="stage" data-page="8" hidden>
-        <p class="eyebrow">capitulo 8</p>
-        <h2>Pequenas promessas</h2>
-        <div class="promise-grid">
-          <div><span>01</span><strong>Te ouvir com paciencia.</strong></div>
-          <div><span>02</span><strong>Respeitar seu tempo e seu coracao.</strong></div>
-          <div><span>03</span><strong>Celebrar suas conquistas como se fossem minhas.</strong></div>
-          <div><span>04</span><strong>Escolher voce tambem nos dias comuns.</strong></div>
-        </div>
-        <button class="primary" data-next>continuar</button>
-      </section>
-
-      <section class="stage" data-page="9" hidden>
+      <section class="stage gallery-page" data-page="9" hidden>
         <p class="eyebrow">capitulo 9</p>
-        <h2>Um lugar nosso</h2>
+        <h2>Mais pedacinhos de nos</h2>
         <p>
-          Se eu pudesse pausar o mundo, escolheria um instante em que nada
-          precisa ser perfeito: so a gente, o tempo mais devagar, e a certeza de
-          que estar contigo faz sentido.
+          Algumas paginas nao precisam explicar tudo. As fotos falam, e o
+          coracao entende.
         </p>
-        <label class="field-card">
-          <span>lugar, data ou momento de voces</span>
-          <input id="wishInput" data-save="wishMoment" type="text" placeholder="ex: nosso primeiro encontro" />
-        </label>
-        <p class="wish-line" id="wishLine">Esse momento vai virar parte da historia.</p>
-        <button class="primary" data-next>guardar esse momento</button>
+        <div class="photo-grid">
+          <div class="photo-frame wide-photo" data-photo="foto especial 1"></div>
+          <div class="photo-frame" data-photo="foto especial 2"></div>
+          <div class="photo-frame" data-photo="foto especial 3"></div>
+        </div>
+        <button class="primary" data-next>chegar no pedido</button>
       </section>
 
       <section class="stage proposal-page" data-page="10" hidden>
@@ -184,31 +216,24 @@
           Com carinho, com verdade, e com aquela coragem boa de quem encontrou
           alguem que vale a pena escolher:
         </p>
+        <div class="photo-frame proposal-photo" data-photo="foto nossa para o pedido"></div>
         <div class="proposal">
           <span>voce aceita viver essa historia comigo?</span>
           <strong>Quer namorar comigo?</strong>
         </div>
-        <div class="answer-row">
-          <button class="yes" data-yes>sim</button>
-          <button class="soft" data-next>ainda quero ler o final</button>
-        </div>
+        <button class="primary" data-next>ler a ultima pagina</button>
       </section>
 
       <section class="stage finale" data-page="11" hidden>
         <p class="eyebrow">final</p>
-        <h2 id="finalTitle">Eu prometo cuidar do que a gente construir.</h2>
+        <h2>Eu prometo cuidar do que a gente construir.</h2>
         <p>
           Prometo estar presente, rir contigo, aprender contigo, respeitar seus
           tempos e fazer do nosso amor uma casa bonita de morar.
         </p>
-        <div class="questions">
-          <h3>Coisas que ainda da para personalizar</h3>
-          <ul>
-            <li>Nome dela e apelido carinhoso.</li>
-            <li>Fotos, musicas e versiculos preferidos.</li>
-            <li>A memoria exata do primeiro dia que conversaram.</li>
-            <li>O texto final do pedido, com o seu jeito de falar.</li>
-          </ul>
+        <div class="photo-grid final-grid">
+          <div class="photo-frame" data-photo="foto final 1"></div>
+          <div class="photo-frame" data-photo="foto final 2"></div>
         </div>
         <button class="primary" data-restart>reler desde o comeco</button>
       </section>
