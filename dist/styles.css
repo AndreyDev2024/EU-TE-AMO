@@ -119,16 +119,114 @@ body.turning-back .stage {
   display: none;
 }
 
-.split,
-.cover {
+.split {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(260px, 0.7fr);
   align-items: center;
 }
 
-.cover .hero-photo {
-  grid-column: 2;
-  grid-row: 1 / span 3;
+.letter-cover {
+  align-items: center;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1fr);
+}
+
+.envelope-scene {
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+  perspective: 1200px;
+}
+
+.envelope {
+  position: relative;
+  width: min(340px, 82vw);
+  height: 230px;
+  border: 1px solid rgba(255, 210, 140, 0.34);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255, 247, 241, 0.18), rgba(255, 111, 156, 0.12)),
+    rgba(255, 247, 241, 0.08);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.34);
+  overflow: visible;
+}
+
+.envelope::before,
+.envelope::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 72%;
+  background:
+    linear-gradient(145deg, rgba(255, 210, 140, 0.16), rgba(255, 111, 156, 0.13)),
+    rgba(255, 247, 241, 0.05);
+  clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
+  border-radius: 0 0 8px 8px;
+  z-index: 3;
+}
+
+.flap {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 132px;
+  transform-origin: top;
+  transform: rotateX(0deg);
+  background:
+    linear-gradient(180deg, rgba(255, 210, 140, 0.22), rgba(255, 111, 156, 0.14)),
+    rgba(255, 247, 241, 0.1);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  border-radius: 8px 8px 0 0;
+  animation: openFlap 1.5s 320ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  z-index: 4;
+}
+
+.letter-card {
+  position: absolute;
+  left: 50%;
+  top: 36px;
+  width: 78%;
+  min-height: 190px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 10px;
+  padding: 24px;
+  border: 1px solid rgba(255, 210, 140, 0.42);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(255, 247, 241, 0.98), rgba(255, 235, 224, 0.92));
+  color: #351421;
+  text-align: center;
+  transform: translateX(-50%) translateY(46px);
+  animation: liftLetter 1.5s 620ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  z-index: 2;
+}
+
+.letter-card span {
+  font: 700 0.74rem/1.2 Arial, sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.letter-card strong {
+  font-size: clamp(1.35rem, 4vw, 2.1rem);
+  line-height: 1.05;
+}
+
+.letter-copy {
+  display: grid;
+  gap: 20px;
+}
+
+@keyframes openFlap {
+  to {
+    transform: rotateX(168deg);
+  }
+}
+
+@keyframes liftLetter {
+  to {
+    transform: translateX(-50%) translateY(-86px) rotate(-2deg);
+  }
 }
 
 @keyframes pageIn {
@@ -287,6 +385,10 @@ blockquote {
   min-height: 220px;
 }
 
+.gallery-page .photo-grid .photo-frame {
+  min-height: 160px;
+}
+
 .wide-photo {
   grid-column: span 2;
 }
@@ -298,19 +400,32 @@ blockquote {
 .elapsed {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  gap: 14px;
 }
 
 .elapsed div {
-  min-height: 118px;
+  position: relative;
+  min-height: 128px;
   display: grid;
   place-items: center;
   align-content: center;
   gap: 8px;
-  border: 1px solid rgba(255, 247, 241, 0.16);
+  border: 1px solid rgba(255, 210, 140, 0.24);
   border-radius: 8px;
-  background: rgba(255, 247, 241, 0.06);
+  background:
+    linear-gradient(180deg, rgba(255, 247, 241, 0.12), rgba(255, 247, 241, 0.04)),
+    rgba(255, 111, 156, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
   text-align: center;
+  overflow: hidden;
+}
+
+.elapsed div::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0, rgba(255, 210, 140, 0.18), transparent 60%);
+  pointer-events: none;
 }
 
 .elapsed span,
@@ -325,8 +440,10 @@ blockquote {
 }
 
 .elapsed strong {
-  font: 700 clamp(2rem, 7vw, 4rem)/0.9 Arial, sans-serif;
+  max-width: 100%;
+  font: 700 clamp(1.85rem, 5.6vw, 3.8rem)/0.9 Arial, sans-serif;
   color: var(--ink);
+  overflow-wrap: anywhere;
 }
 
 .gold-line {
@@ -403,6 +520,100 @@ blockquote {
   line-height: 1.45;
 }
 
+.music-page {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotify-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.78fr) minmax(0, 1fr);
+  gap: 22px;
+  align-items: stretch;
+  padding: 18px;
+  border: 1px solid rgba(255, 210, 140, 0.22);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(30, 215, 96, 0.15), rgba(255, 111, 156, 0.12)),
+    rgba(0, 0, 0, 0.32);
+}
+
+.album-cover {
+  min-height: 320px;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.42);
+}
+
+.track-panel {
+  display: grid;
+  align-content: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.track-kicker,
+.track-panel small {
+  color: #87f0aa;
+  font: 700 0.78rem/1.2 Arial, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.track-panel strong {
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 0.92;
+}
+
+.track-panel p {
+  color: rgba(255, 247, 241, 0.74);
+}
+
+audio {
+  width: 100%;
+  accent-color: #1ed760;
+}
+
+.emoji-rain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.emoji-rain button {
+  position: absolute;
+  left: var(--left);
+  top: -48px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 247, 241, 0.22);
+  border-radius: 999px;
+  background: rgba(16, 9, 16, 0.52);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 1.35rem;
+  pointer-events: auto;
+  animation: emojiFall 7s var(--delay) linear infinite;
+  backdrop-filter: blur(10px);
+}
+
+@keyframes emojiFall {
+  to {
+    transform: translateY(calc(100svh + 90px)) rotate(360deg);
+  }
+}
+
+.verse-dock {
+  display: grid;
+  gap: 12px;
+  opacity: 0.72;
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.verse-dock.highlight {
+  opacity: 1;
+  transform: translateY(-4px);
+}
+
 .music-card {
   display: grid;
   gap: 12px;
@@ -412,10 +623,6 @@ blockquote {
 .music-card strong {
   font-size: clamp(1.3rem, 3vw, 2rem);
   line-height: 1.2;
-}
-
-audio {
-  width: 100%;
 }
 
 .music-card small {
@@ -492,16 +699,12 @@ cite {
 
 @media (max-width: 860px) {
   .split,
-  .cover,
+  .letter-cover,
   .topic-layout,
   .reminds-layout,
+  .spotify-layout,
   .verse-grid {
     grid-template-columns: 1fr;
-  }
-
-  .cover .hero-photo {
-    grid-column: auto;
-    grid-row: auto;
   }
 
   .photo-grid,
@@ -547,7 +750,12 @@ cite {
 
   .hero-photo,
   .tall-photo,
-  .album-photo {
+  .album-photo,
+  .album-cover {
     min-height: 300px;
+  }
+
+  .envelope-scene {
+    min-height: 330px;
   }
 }

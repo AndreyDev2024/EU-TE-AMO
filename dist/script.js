@@ -88,6 +88,16 @@ topicImage.addEventListener("error", () => {
   topicImage.classList.add("is-missing");
 });
 
+const verseDock = document.querySelector("#verseDock");
+
+document.querySelectorAll("[data-verse-jump]").forEach((button) => {
+  button.addEventListener("click", () => {
+    verseDock.classList.add("highlight");
+    verseDock.scrollIntoView({ behavior: "smooth", block: "center" });
+    window.setTimeout(() => verseDock.classList.remove("highlight"), 1200);
+  });
+});
+
 document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowRight") showPage(currentPage + 1);
   if (event.key === "ArrowLeft") showPage(currentPage - 1);

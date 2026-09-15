@@ -6,7 +6,7 @@
     <title>Nossa historia</title>
     <meta
       name="description"
-      content="Uma historia romantica, com fotos, musica e um pedido especial."
+      content="Uma historia romantica, com fotos, musica e uma carta de amor."
     />
     <link
       rel="icon"
@@ -21,17 +21,25 @@
       <div class="ambient ambient-two"></div>
       <div class="petals" aria-hidden="true"></div>
 
-      <section class="stage cover" data-page="0">
-        <div class="photo-frame hero-photo" data-photo="coloque aqui uma foto nossa"></div>
-        <div>
+      <section class="stage letter-cover" data-page="0">
+        <div class="envelope-scene" aria-hidden="true">
+          <div class="envelope">
+            <div class="flap"></div>
+            <div class="letter-card">
+              <span>para voce</span>
+              <strong>uma carta de amor</strong>
+            </div>
+          </div>
+        </div>
+        <div class="letter-copy">
           <p class="eyebrow">para voce</p>
-          <h1>Eu queria te contar a nossa historia.</h1>
+          <h1>Antes de tudo, uma carta.</h1>
           <p>
-            Nao como quem quer impressionar. Como quem quer guardar com carinho
-            cada detalhe que me fez chegar ate aqui.
+            Eu queria que essa historia comecasse assim: devagar, com cuidado,
+            como quem abre uma carta guardada perto do coracao.
           </p>
         </div>
-        <button class="primary" data-next>abrir a primeira pagina</button>
+        <button class="primary" data-next>abrir a carta</button>
       </section>
 
       <section class="stage" data-page="1" hidden>
@@ -130,51 +138,50 @@
         <button class="primary" data-next>continuar</button>
       </section>
 
-      <section class="stage memory-page" data-page="6" hidden>
-        <p class="eyebrow">capitulo 6</p>
-        <h2>O que me lembra voce</h2>
-        <div class="reminds-layout">
-          <div class="photo-frame album-photo" data-photo="foto nossa"></div>
-          <div class="reminds-copy">
+      <section class="stage music-page" data-page="6" hidden>
+        <div class="emoji-rain" aria-hidden="true">
+          <button data-verse-jump style="--delay: 0s; --left: 8%">💖</button>
+          <button data-verse-jump style="--delay: 1.3s; --left: 22%">✨</button>
+          <button data-verse-jump style="--delay: 0.6s; --left: 39%">🙏</button>
+          <button data-verse-jump style="--delay: 2s; --left: 56%">💫</button>
+          <button data-verse-jump style="--delay: 1s; --left: 73%">❤️</button>
+          <button data-verse-jump style="--delay: 2.6s; --left: 88%">🌙</button>
+        </div>
+        <p class="eyebrow">capitulo 7</p>
+        <h2>Sua musica</h2>
+        <div class="spotify-layout">
+          <div class="album-cover photo-frame" data-photo="capa da nossa musica"></div>
+          <div class="track-panel">
+            <span class="track-kicker">tocando agora</span>
+            <strong>Abertura de Dragon Ball GT</strong>
             <p>
-              Tem coisas que, quando aparecem, me fazem lembrar de voce na hora:
-              uma musica, uma frase, uma conversa, um jeito de rir, uma paz.
+              Essa musica fica aqui como uma lembranca nossa. A capa pode ser
+              uma foto de voces dois, como se fosse o album da historia.
             </p>
-            <div class="music-card">
-              <span>musica</span>
-              <strong>Abertura de Dragon Ball GT</strong>
-              <audio controls preload="metadata">
-                <source src="./assets/abertura-dragon-ball-gt.mp3" type="audio/mpeg" />
-              </audio>
-              <small>Coloque o arquivo da musica nesse caminho no codigo.</small>
-            </div>
+            <audio controls preload="metadata">
+              <source src="./assets/abertura-dragon-ball-gt.mp3" type="audio/mpeg" />
+            </audio>
+            <small>Coloque o arquivo da musica nesse caminho no codigo.</small>
+          </div>
+        </div>
+        <div class="verse-dock" id="verseDock">
+          <p class="eyebrow">versiculos</p>
+          <div class="verse-grid">
+            <blockquote>
+              "Acima de tudo, porem, revistam-se do amor, que e o elo perfeito."
+              <cite>Colossenses 3:14</cite>
+            </blockquote>
+            <blockquote>
+              "O amor e paciente, o amor e bondoso."
+              <cite>1 Corintios 13:4</cite>
+            </blockquote>
+            <blockquote>
+              "Assim, permanecem agora estes tres: a fe, a esperanca e o amor."
+              <cite>1 Corintios 13:13</cite>
+            </blockquote>
           </div>
         </div>
         <button class="primary" data-next>seguir</button>
-      </section>
-
-      <section class="stage" data-page="7" hidden>
-        <p class="eyebrow">capitulo 7</p>
-        <h2>Versiculos para abencoar a gente</h2>
-        <p>
-          Um amor bonito tambem pode ser entregue a Deus com cuidado, gratidao e
-          respeito.
-        </p>
-        <div class="verse-grid">
-          <blockquote>
-            "Acima de tudo, porem, revistam-se do amor, que e o elo perfeito."
-            <cite>Colossenses 3:14</cite>
-          </blockquote>
-          <blockquote>
-            "O amor e paciente, o amor e bondoso."
-            <cite>1 Corintios 13:4</cite>
-          </blockquote>
-          <blockquote>
-            "Assim, permanecem agora estes tres: a fe, a esperanca e o amor."
-            <cite>1 Corintios 13:13</cite>
-          </blockquote>
-        </div>
-        <button class="primary" data-next>continuar com fe</button>
       </section>
 
       <section class="stage split" data-page="8" hidden>
@@ -206,22 +213,7 @@
           <div class="photo-frame" data-photo="foto especial 2"></div>
           <div class="photo-frame" data-photo="foto especial 3"></div>
         </div>
-        <button class="primary" data-next>chegar no pedido</button>
-      </section>
-
-      <section class="stage proposal-page" data-page="10" hidden>
-        <p class="eyebrow">capitulo 10</p>
-        <h2>Entao eu quero te perguntar</h2>
-        <p>
-          Com carinho, com verdade, e com aquela coragem boa de quem encontrou
-          alguem que vale a pena escolher:
-        </p>
-        <div class="photo-frame proposal-photo" data-photo="foto nossa para o pedido"></div>
-        <div class="proposal">
-          <span>voce aceita viver essa historia comigo?</span>
-          <strong>Quer namorar comigo?</strong>
-        </div>
-        <button class="primary" data-next>ler a ultima pagina</button>
+        <button class="primary" data-next>continuar</button>
       </section>
 
       <section class="stage finale" data-page="11" hidden>
