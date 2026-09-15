@@ -128,7 +128,7 @@ body.turning-back .stage {
 .letter-cover {
   align-items: center;
   display: grid;
-  grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1fr);
+  grid-template-columns: minmax(260px, 0.76fr) minmax(220px, 0.64fr) minmax(0, 1fr);
 }
 
 .envelope-scene {
@@ -215,6 +215,35 @@ body.turning-back .stage {
 .letter-copy {
   display: grid;
   gap: 20px;
+}
+
+.opening-photo,
+.media-card {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 210, 140, 0.28);
+  border-radius: 8px;
+  background: rgba(255, 247, 241, 0.06);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.26);
+}
+
+.opening-photo {
+  min-height: 380px;
+}
+
+.opening-photo img,
+.media-card img,
+.media-card video {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  display: block;
+  object-fit: cover;
+}
+
+.media-card video {
+  background: #09070a;
 }
 
 @keyframes openFlap {
@@ -385,7 +414,15 @@ blockquote {
   min-height: 220px;
 }
 
+.photo-grid .media-card {
+  min-height: 220px;
+}
+
 .gallery-page .photo-grid .photo-frame {
+  min-height: 160px;
+}
+
+.gallery-page .photo-grid .media-card {
   min-height: 160px;
 }
 
@@ -541,6 +578,10 @@ blockquote {
 .album-cover {
   min-height: 320px;
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.42);
+}
+
+.portrait-media {
+  min-height: 440px;
 }
 
 .track-panel {
