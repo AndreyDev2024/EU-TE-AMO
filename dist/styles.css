@@ -231,19 +231,18 @@ body.turning-back .stage {
 .opening-photo {
   align-self: stretch;
   max-width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1600 / 737;
 }
 
 .media-card {
   display: grid;
   place-items: center;
-  aspect-ratio: 16 / 9;
 }
 
 .opening-photo img,
 .media-card img {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
   object-fit: contain;
 }
@@ -429,6 +428,11 @@ blockquote {
 
 .photo-grid .media-card {
   align-self: start;
+  aspect-ratio: 1600 / 737;
+}
+
+.photo-grid .media-card img {
+  height: 100%;
 }
 
 .gallery-page .photo-grid .photo-frame {
@@ -551,8 +555,8 @@ blockquote {
 
 .topic-photo img {
   width: 100%;
+  aspect-ratio: 1600 / 737;
   height: auto;
-  aspect-ratio: 16 / 9;
   display: block;
   object-fit: contain;
   background:
@@ -598,6 +602,7 @@ blockquote {
 .album-cover {
   align-self: start;
   width: 100%;
+  aspect-ratio: 16 / 9;
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.42);
 }
 
@@ -607,6 +612,11 @@ blockquote {
 
 .portrait-media {
   align-self: start;
+  aspect-ratio: 1600 / 737;
+}
+
+.portrait-media img {
+  height: 100%;
 }
 
 .likes-media-stack {
@@ -621,8 +631,17 @@ blockquote {
   gap: 12px;
 }
 
+.likes-gallery .media-card {
+  aspect-ratio: 1600 / 737;
+}
+
+.likes-gallery .media-card img {
+  height: 100%;
+}
+
 .final-video-card {
   width: 100%;
+  aspect-ratio: 16 / 9;
 }
 
 .final-video-card video {
