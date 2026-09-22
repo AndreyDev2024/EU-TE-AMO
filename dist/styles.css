@@ -229,21 +229,28 @@ body.turning-back .stage {
 }
 
 .opening-photo {
-  align-self: center;
-  width: fit-content;
+  align-self: stretch;
   max-width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.media-card {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
 }
 
 .opening-photo img,
 .media-card img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
+  object-fit: contain;
 }
 
 .media-card video {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
   object-fit: contain;
 }
@@ -412,7 +419,7 @@ blockquote {
 
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -433,7 +440,7 @@ blockquote {
 }
 
 .wide-photo {
-  grid-column: span 2;
+  grid-column: auto;
 }
 
 .final-grid {
@@ -545,7 +552,7 @@ blockquote {
 .topic-photo img {
   width: 100%;
   height: auto;
-  max-height: 460px;
+  aspect-ratio: 16 / 9;
   display: block;
   object-fit: contain;
   background:
@@ -567,6 +574,7 @@ blockquote {
 
 .music-page {
   position: relative;
+  width: min(1080px, 100%);
   justify-content: flex-start;
   overflow-x: hidden;
   overflow-y: auto;
@@ -575,7 +583,7 @@ blockquote {
 
 .spotify-layout {
   display: grid;
-  grid-template-columns: minmax(240px, 0.78fr) minmax(0, 1fr);
+  grid-template-columns: minmax(360px, 1.35fr) minmax(260px, 0.85fr);
   gap: 22px;
   align-items: stretch;
   padding: 22px;
@@ -589,6 +597,7 @@ blockquote {
 
 .album-cover {
   align-self: start;
+  width: 100%;
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.42);
 }
 
@@ -598,6 +607,18 @@ blockquote {
 
 .portrait-media {
   align-self: start;
+}
+
+.likes-media-stack {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.likes-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
 .final-video-card {
