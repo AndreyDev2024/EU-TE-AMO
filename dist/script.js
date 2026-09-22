@@ -1,6 +1,6 @@
 const pages = [...document.querySelectorAll(".stage")];
 const pager = document.querySelector(".pager");
-const startDate = new Date("2026-07-23T00:00:00-03:00");
+const startDate = new Date("2026-07-23T19:12:00-03:00");
 let currentPage = 0;
 
 pages.forEach((_, index) => {
@@ -28,33 +28,36 @@ function showPage(index) {
   });
 }
 
-function fullMonthsBetween(from, to) {
+function elapsedParts(from, to) {
   let months =
     (to.getFullYear() - from.getFullYear()) * 12 +
     (to.getMonth() - from.getMonth());
 
   const monthAnchor = new Date(from);
   monthAnchor.setMonth(from.getMonth() + months);
-  if (monthAnchor > to) months -= 1;
-  return Math.max(0, months);
+  if (monthAnchor > to) {
+    months -= 1;
+    monthAnchor.setMonth(from.getMonth() + months);
+  }
+
+  const remainder = Math.max(0, to - monthAnchor);
+  const days = Math.floor(remainder / 86400000);
+  const hours = Math.floor((remainder % 86400000) / 3600000);
+  const minutes = Math.floor((remainder % 3600000) / 60000);
+  const seconds = Math.floor((remainder % 60000) / 1000);
+
+  return { months: Math.max(0, months), days, hours, minutes, seconds };
 }
 
 function updateCounter() {
   const now = new Date();
-  const totalMs = Math.max(0, now - startDate);
-  const seconds = Math.floor(totalMs / 1000);
-  const minutes = Math.floor(seconds / 60);
-  const hours = Math.floor(minutes / 60);
-  const days = Math.floor(hours / 24);
-  const weeks = Math.floor(days / 7);
-  const months = fullMonthsBetween(startDate, now);
+  const elapsed = elapsedParts(startDate, now);
 
-  document.querySelector("#monthsKnown").textContent = months;
-  document.querySelector("#weeksKnown").textContent = weeks;
-  document.querySelector("#daysKnown").textContent = days;
-  document.querySelector("#hoursKnown").textContent = hours;
-  document.querySelector("#minutesKnown").textContent = minutes;
-  document.querySelector("#secondsKnown").textContent = seconds;
+  document.querySelector("#monthsKnown").textContent = elapsed.months;
+  document.querySelector("#daysKnown").textContent = elapsed.days;
+  document.querySelector("#hoursKnown").textContent = elapsed.hours;
+  document.querySelector("#minutesKnown").textContent = elapsed.minutes;
+  document.querySelector("#secondsKnown").textContent = elapsed.seconds;
 }
 
 document.querySelectorAll("[data-next]").forEach((button) => {
@@ -89,18 +92,42 @@ topicImage.addEventListener("error", () => {
 });
 
 const verseDock = document.querySelector("#verseDock");
+const versePopover = document.querySelector("#versePopover");
+const versePopupText = document.querySelector("#versePopupText");
+const verses = [
+  {
+    text: '"Acima de tudo, porem, revistam-se do amor, que e o elo perfeito."',
+    cite: "Colossenses 3:14",
+  },
+  {
+    text: '"O amor e paciente, o amor e bondoso."',
+    cite: "1 Corintios 13:4",
+  },
+  {
+    text: '"Assim, permanecem agora estes tres: a fe, a esperanca e o amor."',
+    cite: "1 Corintios 13:13",
+  },
+];
 
 document.querySelectorAll("[data-verse-jump]").forEach((button) => {
   button.addEventListener("click", () => {
+    const verse = verses[Number(button.dataset.verseJump)] || verses[0];
+    versePopupText.innerHTML = `${verse.text}<cite>${verse.cite}</cite>`;
+    versePopover.hidden = false;
     verseDock.classList.add("highlight");
-    verseDock.scrollIntoView({ behavior: "smooth", block: "center" });
+    versePopover.scrollIntoView({ behavior: "smooth", block: "center" });
     window.setTimeout(() => verseDock.classList.remove("highlight"), 1200);
   });
+});
+
+document.querySelector("[data-close-verse]").addEventListener("click", () => {
+  versePopover.hidden = true;
 });
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowRight") showPage(currentPage + 1);
   if (event.key === "ArrowLeft") showPage(currentPage - 1);
+  if (event.key === "Escape") versePopover.hidden = true;
 });
 
 updateCounter();

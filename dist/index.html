@@ -48,19 +48,15 @@
       <section class="stage" data-page="1" hidden>
         <p class="eyebrow">capitulo 1</p>
         <h2>Desde 23 de julho</h2>
-        <p>
-          Desde o dia em que a gente comecou a conversar, alguma coisa em mim
-          passou a esperar suas mensagens com um carinho diferente.
-        </p>
+        <p>Desde 23 de julho, as 19:12, esse tempo virou parte da nossa historia.</p>
         <div class="elapsed" aria-label="Tempo desde que voces se conhecem">
           <div><span>faz</span><strong id="monthsKnown">0</strong><small>meses</small></div>
-          <div><span>faz</span><strong id="weeksKnown">0</strong><small>semanas</small></div>
           <div><span>faz</span><strong id="daysKnown">0</strong><small>dias</small></div>
           <div><span>faz</span><strong id="hoursKnown">0</strong><small>horas</small></div>
           <div><span>faz</span><strong id="minutesKnown">0</strong><small>minutos</small></div>
           <div><span>faz</span><strong id="secondsKnown">0</strong><small>segundos</small></div>
         </div>
-        <p class="gold-line">Tudo isso contando o mesmo tempo, so em jeitos diferentes.</p>
+        <p class="gold-line">Esse e o tempo que estamos construindo, segundo por segundo.</p>
         <button class="primary" data-next>continuar</button>
       </section>
 
@@ -142,13 +138,13 @@
       </section>
 
       <section class="stage music-page" data-page="6" hidden>
-        <div class="emoji-rain" aria-hidden="true">
-          <button data-verse-jump style="--delay: 0s; --left: 8%">💖</button>
-          <button data-verse-jump style="--delay: 1.3s; --left: 22%">✨</button>
-          <button data-verse-jump style="--delay: 0.6s; --left: 39%">🙏</button>
-          <button data-verse-jump style="--delay: 2s; --left: 56%">💫</button>
-          <button data-verse-jump style="--delay: 1s; --left: 73%">❤️</button>
-          <button data-verse-jump style="--delay: 2.6s; --left: 88%">🌙</button>
+        <div class="emoji-rain">
+          <button data-verse-jump="0" style="--delay: 0s; --left: 8%" aria-label="Abrir versiculo">💖</button>
+          <button data-verse-jump="1" style="--delay: 1.3s; --left: 22%" aria-label="Abrir versiculo">✨</button>
+          <button data-verse-jump="2" style="--delay: 0.6s; --left: 39%" aria-label="Abrir versiculo">🙏</button>
+          <button data-verse-jump="0" style="--delay: 2s; --left: 56%" aria-label="Abrir versiculo">💫</button>
+          <button data-verse-jump="1" style="--delay: 1s; --left: 73%" aria-label="Abrir versiculo">❤️</button>
+          <button data-verse-jump="2" style="--delay: 2.6s; --left: 88%" aria-label="Abrir versiculo">🌙</button>
         </div>
         <p class="eyebrow">capitulo 7</p>
         <h2>Sua musica</h2>
@@ -164,7 +160,7 @@
             <audio controls preload="metadata">
               <source src="./assets/abertura-dragon-ball-gt.mp3" type="audio/mpeg" />
             </audio>
-            <small>Coloque o arquivo da musica nesse caminho no codigo.</small>
+            <small>Player pronto: coloque o MP3 em dist/assets/abertura-dragon-ball-gt.mp3.</small>
           </div>
         </div>
         <div class="verse-dock" id="verseDock">
@@ -183,6 +179,13 @@
               <cite>1 Corintios 13:13</cite>
             </blockquote>
           </div>
+        </div>
+        <div class="verse-popover" id="versePopover" hidden>
+          <button class="verse-close" data-close-verse aria-label="Fechar versiculo">×</button>
+          <blockquote id="versePopupText">
+            "Acima de tudo, porem, revistam-se do amor, que e o elo perfeito."
+            <cite>Colossenses 3:14</cite>
+          </blockquote>
         </div>
         <button class="primary" data-next>seguir</button>
       </section>
