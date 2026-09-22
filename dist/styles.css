@@ -229,15 +229,21 @@ body.turning-back .stage {
 }
 
 .opening-photo {
-  min-height: 380px;
+  align-self: center;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .opening-photo img,
-.media-card img,
+.media-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .media-card video {
   width: 100%;
-  height: 100%;
-  min-height: inherit;
+  height: auto;
   display: block;
   object-fit: contain;
 }
@@ -415,7 +421,7 @@ blockquote {
 }
 
 .photo-grid .media-card {
-  min-height: 220px;
+  align-self: start;
 }
 
 .gallery-page .photo-grid .photo-frame {
@@ -423,7 +429,7 @@ blockquote {
 }
 
 .gallery-page .photo-grid .media-card {
-  min-height: 160px;
+  align-self: start;
 }
 
 .wide-photo {
@@ -431,7 +437,9 @@ blockquote {
 }
 
 .final-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  width: min(100%, 1040px);
 }
 
 .elapsed {
@@ -527,7 +535,6 @@ blockquote {
 }
 
 .topic-photo {
-  min-height: 430px;
   margin: 0;
   border: 1px solid rgba(255, 210, 140, 0.28);
   border-radius: 8px;
@@ -537,7 +544,8 @@ blockquote {
 
 .topic-photo img {
   width: 100%;
-  height: 360px;
+  height: auto;
+  max-height: 460px;
   display: block;
   object-fit: contain;
   background:
@@ -570,21 +578,35 @@ blockquote {
   grid-template-columns: minmax(240px, 0.78fr) minmax(0, 1fr);
   gap: 22px;
   align-items: stretch;
-  padding: 18px;
-  border: 1px solid rgba(255, 210, 140, 0.22);
+  padding: 22px;
+  border: 1px solid rgba(30, 215, 96, 0.26);
   border-radius: 8px;
   background:
-    linear-gradient(145deg, rgba(30, 215, 96, 0.15), rgba(255, 111, 156, 0.12)),
-    rgba(0, 0, 0, 0.32);
+    linear-gradient(145deg, rgba(30, 215, 96, 0.26), rgba(8, 13, 10, 0.92) 42%, rgba(0, 0, 0, 0.72)),
+    rgba(0, 0, 0, 0.46);
+  box-shadow: 0 30px 85px rgba(0, 0, 0, 0.36);
 }
 
 .album-cover {
-  min-height: 320px;
+  align-self: start;
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.42);
 }
 
+.album-cover img {
+  border-radius: 7px;
+}
+
 .portrait-media {
-  min-height: 440px;
+  align-self: start;
+}
+
+.final-video-card {
+  width: 100%;
+}
+
+.final-video-card video {
+  max-height: min(72svh, 680px);
+  background: #050506;
 }
 
 .track-panel {
@@ -592,6 +614,7 @@ blockquote {
   align-content: center;
   gap: 16px;
   min-width: 0;
+  padding: clamp(4px, 2vw, 16px) 0;
 }
 
 .track-kicker,
@@ -603,8 +626,8 @@ blockquote {
 }
 
 .track-panel strong {
-  font-size: clamp(2rem, 6vw, 4rem);
-  line-height: 0.92;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 0.94;
 }
 
 .track-panel p {
@@ -614,6 +637,34 @@ blockquote {
 audio {
   width: 100%;
   accent-color: #1ed760;
+  border-radius: 999px;
+}
+
+.spotify-progress {
+  display: grid;
+  grid-template-columns: auto minmax(72px, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  color: rgba(255, 247, 241, 0.62);
+  font: 700 0.76rem/1 Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.spotify-progress i {
+  position: relative;
+  height: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 247, 241, 0.18);
+}
+
+.spotify-progress i::before {
+  content: "";
+  position: absolute;
+  inset: 0 58% 0 0;
+  border-radius: inherit;
+  background: #1ed760;
 }
 
 .emoji-rain {
@@ -781,20 +832,9 @@ cite {
   }
 
   .photo-grid,
-.final-grid {
-  grid-template-columns: 1fr;
-}
-
-.final-grid .media-card {
-  min-height: 0;
-}
-
-.final-grid video {
-  height: auto;
-  max-height: 520px;
-  aspect-ratio: 16 / 9;
-  object-fit: contain;
-}
+  .final-grid {
+    grid-template-columns: 1fr;
+  }
 
   .elapsed {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -834,8 +874,7 @@ cite {
 
   .hero-photo,
   .tall-photo,
-  .album-photo,
-  .album-cover {
+  .album-photo {
     min-height: 300px;
   }
 

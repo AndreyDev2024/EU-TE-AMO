@@ -160,7 +160,11 @@
             <audio controls preload="metadata">
               <source src="./assets/abertura-dragon-ball-gt.mp3" type="audio/mpeg" />
             </audio>
-            <small>Player pronto: coloque o MP3 em dist/assets/abertura-dragon-ball-gt.mp3.</small>
+            <div class="spotify-progress" aria-hidden="true">
+              <span>0:00</span>
+              <i></i>
+              <span>nossa faixa</span>
+            </div>
           </div>
         </div>
         <div class="verse-dock" id="verseDock">
@@ -229,10 +233,10 @@
           Prometo estar presente, rir contigo, aprender contigo, respeitar seus
           tempos e fazer do nosso amor uma casa bonita de morar.
         </p>
-        <div class="photo-grid final-grid">
-          <figure class="media-card"><video src="./assets/video-1.mp4" controls preload="metadata"></video></figure>
-          <figure class="media-card"><video src="./assets/video-2.mp4" controls preload="metadata"></video></figure>
-          <figure class="media-card wide-photo"><video src="./assets/video-3.mp4" controls preload="metadata"></video></figure>
+        <div class="final-grid">
+          <figure class="media-card final-video-card">
+            <video src="./assets/video-2.mp4" controls preload="metadata"></video>
+          </figure>
         </div>
         <button class="primary" data-restart>reler desde o comeco</button>
       </section>
