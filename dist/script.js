@@ -68,7 +68,47 @@ dots.forEach((dot) => {
   dot.addEventListener("click", () => showPage(Number(dot.dataset.jump)));
 });
 
-document.querySelector("[data-restart]").addEventListener("click", () => showPage(0));
+const restartButton = document.querySelector("[data-restart]");
+if (restartButton) {
+  restartButton.addEventListener("click", () => showPage(0));
+}
+
+const finalizeButton = document.querySelector("[data-finalize]");
+const loveEnding = document.querySelector("#loveEnding");
+const loveLineOne = document.querySelector("#loveLineOne");
+const loveLineTwo = document.querySelector("#loveLineTwo");
+const finalVideo = document.querySelector(".final-video-card video");
+let finalMessageStarted = false;
+
+function typeLine(element, text, speed = 55) {
+  element.textContent = "";
+  element.classList.remove("is-done");
+  return new Promise((resolve) => {
+    let index = 0;
+    const timer = window.setInterval(() => {
+      element.textContent += text[index] || "";
+      index += 1;
+      if (index > text.length) {
+        window.clearInterval(timer);
+        element.classList.add("is-done");
+        resolve();
+      }
+    }, speed);
+  });
+}
+
+if (finalizeButton && loveEnding) {
+  finalizeButton.addEventListener("click", async () => {
+    if (finalMessageStarted) return;
+    finalMessageStarted = true;
+    if (finalVideo) finalVideo.pause();
+    loveEnding.hidden = false;
+    loveEnding.scrollIntoView({ behavior: "smooth", block: "center" });
+    finalizeButton.hidden = true;
+    await typeLine(loveLineOne, "EU TE amo mil milhoes minha garota", 58);
+    await typeLine(loveLineTwo, "Voce e minha escolha todos os dias e sempre sera", 42);
+  });
+}
 
 const topicImage = document.querySelector("#topicImage");
 const topicText = document.querySelector("#topicText");
