@@ -230,11 +230,9 @@ body.turning-back .stage {
   box-shadow:
     inset 0 0 0 1px rgba(255, 247, 241, 0.08),
     0 18px 44px rgba(0, 0, 0, 0.24);
-}
-
-.media-card {
   display: grid;
   place-items: center;
+  align-self: start;
 }
 
 .media-card img {
@@ -416,8 +414,9 @@ blockquote {
 
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  align-items: start;
+  gap: clamp(10px, 2vw, 16px);
 }
 
 .photo-grid .photo-frame {
@@ -426,11 +425,10 @@ blockquote {
 
 .photo-grid .media-card {
   align-self: start;
-  aspect-ratio: 1600 / 737;
 }
 
 .photo-grid .media-card img {
-  height: 100%;
+  height: auto;
 }
 
 .gallery-page .photo-grid .photo-frame {
@@ -439,6 +437,10 @@ blockquote {
 
 .gallery-page .photo-grid .media-card {
   align-self: start;
+}
+
+.gallery-page .photo-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
 }
 
 .wide-photo {
@@ -560,7 +562,6 @@ blockquote {
 
 .topic-photo img {
   width: 100%;
-  aspect-ratio: 1600 / 737;
   height: auto;
   display: block;
   object-fit: contain;
@@ -618,11 +619,10 @@ blockquote {
 
 .portrait-media {
   align-self: start;
-  aspect-ratio: 1600 / 737;
 }
 
 .portrait-media img {
-  height: 100%;
+  height: auto;
 }
 
 .likes-media-stack {
@@ -633,16 +633,21 @@ blockquote {
 
 .likes-gallery {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+  align-items: start;
+  gap: clamp(8px, 2vw, 12px);
 }
 
 .likes-gallery .media-card {
-  aspect-ratio: 1600 / 737;
+  align-self: start;
 }
 
 .likes-gallery .media-card img {
-  height: 100%;
+  height: auto;
+}
+
+.future-photo {
+  align-self: center;
 }
 
 .finale {
@@ -968,6 +973,15 @@ cite {
   .elapsed {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .stage {
+    width: min(100%, 760px);
+  }
+
+  .media-card,
+  .topic-photo {
+    padding: 5px;
+  }
 }
 
 @media (max-width: 620px) {
@@ -1017,6 +1031,16 @@ cite {
     grid-column: auto;
   }
 
+  .photo-grid,
+  .likes-gallery {
+    gap: 10px;
+  }
+
+  .media-card,
+  .topic-photo {
+    padding: 4px;
+  }
+
   .hero-photo,
   .tall-photo,
   .album-photo {
@@ -1025,5 +1049,26 @@ cite {
 
   .envelope-scene {
     min-height: 330px;
+  }
+}
+
+@media (max-width: 390px) {
+  .story-shell {
+    padding-inline: 10px;
+  }
+
+  .stage {
+    padding-inline: 14px;
+  }
+
+  .media-card,
+  .topic-photo {
+    padding: 3px;
+    border-radius: 7px;
+  }
+
+  .media-card img,
+  .topic-photo img {
+    border-radius: 4px;
   }
 }
