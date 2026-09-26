@@ -52,12 +52,18 @@ function elapsedParts(from, to) {
 function updateCounter() {
   const now = new Date();
   const elapsed = elapsedParts(startDate, now);
+  const counterFields = {
+    monthsKnown: elapsed.months,
+    daysKnown: elapsed.days,
+    hoursKnown: elapsed.hours,
+    minutesKnown: elapsed.minutes,
+    secondsKnown: elapsed.seconds,
+  };
 
-  document.querySelector("#monthsKnown").textContent = elapsed.months;
-  document.querySelector("#daysKnown").textContent = elapsed.days;
-  document.querySelector("#hoursKnown").textContent = elapsed.hours;
-  document.querySelector("#minutesKnown").textContent = elapsed.minutes;
-  document.querySelector("#secondsKnown").textContent = elapsed.seconds;
+  Object.entries(counterFields).forEach(([id, value]) => {
+    const field = document.getElementById(id);
+    if (field) field.textContent = value;
+  });
 }
 
 document.querySelectorAll("[data-next]").forEach((button) => {
@@ -77,10 +83,13 @@ const finalizeButton = document.querySelector("[data-finalize]");
 const loveEnding = document.querySelector("#loveEnding");
 const loveLineOne = document.querySelector("#loveLineOne");
 const loveLineTwo = document.querySelector("#loveLineTwo");
+const finale = document.querySelector(".finale");
+const finalGrid = document.querySelector(".final-grid");
 const finalVideo = document.querySelector(".final-video-card video");
 let finalMessageStarted = false;
 
 function typeLine(element, text, speed = 55) {
+  if (!element) return Promise.resolve();
   element.textContent = "";
   element.classList.remove("is-done");
   return new Promise((resolve) => {
@@ -102,11 +111,12 @@ if (finalizeButton && loveEnding) {
     if (finalMessageStarted) return;
     finalMessageStarted = true;
     if (finalVideo) finalVideo.pause();
+    if (finalGrid) finalGrid.hidden = true;
+    if (finale) finale.classList.add("finale-revealed");
     loveEnding.hidden = false;
-    loveEnding.scrollIntoView({ behavior: "smooth", block: "center" });
     finalizeButton.hidden = true;
-    await typeLine(loveLineOne, "EU TE amo mil milhoes minha garota", 58);
-    await typeLine(loveLineTwo, "Voce e minha escolha todos os dias e sempre sera", 42);
+    await typeLine(loveLineOne, "EU TE AMO MIL MILHÕES MINHA RUIVA", 58);
+    await typeLine(loveLineTwo, "Voce e minha escolha todos os dias e sempre será", 42);
   });
 }
 
@@ -160,9 +170,12 @@ document.querySelectorAll("[data-verse-jump]").forEach((button) => {
   });
 });
 
-document.querySelector("[data-close-verse]").addEventListener("click", () => {
-  versePopover.hidden = true;
-});
+const closeVerseButton = document.querySelector("[data-close-verse]");
+if (closeVerseButton && versePopover) {
+  closeVerseButton.addEventListener("click", () => {
+    versePopover.hidden = true;
+  });
+}
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowRight") showPage(currentPage + 1);

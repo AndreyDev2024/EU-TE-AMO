@@ -684,6 +684,14 @@ blockquote {
   margin-top: 2px;
 }
 
+.finale-revealed {
+  justify-content: center;
+}
+
+.finale-revealed > .eyebrow {
+  display: none;
+}
+
 .love-ending {
   width: min(100%, 820px);
   min-height: 210px;
