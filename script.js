@@ -26,6 +26,8 @@ function showPage(index) {
   dots.forEach((dot, dotIndex) => {
     dot.classList.toggle("active", dotIndex === currentPage);
   });
+
+  window.scrollTo(0, 0);
 }
 
 function elapsedParts(from, to) {

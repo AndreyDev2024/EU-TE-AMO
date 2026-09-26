@@ -13,9 +13,17 @@
   box-sizing: border-box;
 }
 
+img,
+video,
+audio {
+  max-width: 100%;
+}
+
 html,
 body {
   min-height: 100%;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -89,7 +97,8 @@ button {
 }
 
 .stage {
-  width: min(920px, 100%);
+  width: min(920px, calc(100vw - 56px));
+  max-width: 100%;
   min-height: min(720px, calc(100svh - 104px));
   min-height: min(720px, calc(100dvh - 104px));
   overflow: visible;
@@ -221,6 +230,7 @@ body.turning-back .stage {
 
 .media-card {
   min-width: 0;
+  max-width: 100%;
   margin: 0;
   overflow: hidden;
   padding: 6px;
@@ -239,6 +249,7 @@ body.turning-back .stage {
 
 .media-card img {
   width: 100%;
+  max-width: 100%;
   height: auto;
   display: block;
   object-fit: contain;
@@ -430,7 +441,7 @@ blockquote {
 
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   align-items: start;
   gap: clamp(10px, 2vw, 16px);
 }
@@ -456,7 +467,7 @@ blockquote {
 }
 
 .gallery-page .photo-grid {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
 }
 
 .wide-photo {
@@ -564,6 +575,7 @@ blockquote {
 
 .topic-photo {
   margin: 0;
+  max-width: 100%;
   padding: 6px;
   border: 1px solid rgba(255, 210, 140, 0.46);
   border-radius: 8px;
@@ -579,6 +591,7 @@ blockquote {
 
 .topic-photo img {
   width: 100%;
+  max-width: 100%;
   height: auto;
   display: block;
   object-fit: contain;
@@ -1007,6 +1020,54 @@ cite {
   .media-card,
   .topic-photo {
     padding: 5px;
+  }
+}
+
+@media (max-height: 560px) {
+  .story-shell {
+    padding-top: 12px;
+    padding-bottom: 72px;
+  }
+
+  .stage {
+    min-height: auto;
+    justify-content: flex-start;
+    gap: 14px;
+    padding: 22px;
+  }
+
+  h1,
+  h2 {
+    font-size: clamp(1.9rem, 8.5vh, 3.1rem);
+    line-height: 1;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .split,
+  .topic-layout,
+  .photo-grid,
+  .gallery-page .photo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .topic-buttons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .topic-buttons button {
+    min-height: 42px;
+    padding: 12px 10px;
+    font-size: 0.85rem;
+  }
+
+  .stage > video,
+  .final-video-card video {
+    max-height: 44vh;
   }
 }
 
