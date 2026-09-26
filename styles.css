@@ -592,6 +592,7 @@ blockquote {
 .topic-photo img {
   width: 100%;
   max-width: 100%;
+  max-height: 340px;
   height: auto;
   display: block;
   object-fit: contain;
@@ -1068,6 +1069,16 @@ cite {
   .stage > video,
   .final-video-card video {
     max-height: 44vh;
+  }
+
+  .topic-photo img {
+    max-height: 30vh;
+  }
+
+  .topic-photo figcaption {
+    padding-top: 10px;
+    font-size: 0.98rem;
+    line-height: 1.35;
   }
 }
 

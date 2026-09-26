@@ -135,7 +135,7 @@ document.querySelectorAll("[data-topic]").forEach((button, index) => {
     topicImage.classList.remove("is-missing");
     topicImage.src = button.dataset.photo;
     topicImage.alt = `Foto do tópico ${button.dataset.topic}`;
-    topicText.textContent = button.dataset.text;
+    if (topicText) topicText.textContent = button.dataset.text;
   });
 });
 
