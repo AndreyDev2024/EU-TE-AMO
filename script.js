@@ -7,7 +7,7 @@ pages.forEach((_, index) => {
   const dot = document.createElement("button");
   dot.type = "button";
   dot.dataset.jump = String(index);
-  dot.setAttribute("aria-label", `Ir para a pagina ${index + 1}`);
+  dot.setAttribute("aria-label", `Ir para a página ${index + 1}`);
   if (index === 0) dot.classList.add("active");
   pager.appendChild(dot);
 });
@@ -116,7 +116,7 @@ if (finalizeButton && loveEnding) {
     loveEnding.hidden = false;
     finalizeButton.hidden = true;
     await typeLine(loveLineOne, "EU TE AMO MIL MILHÕES MINHA RUIVA", 58);
-    await typeLine(loveLineTwo, "Voce e minha escolha todos os dias e sempre será", 42);
+    await typeLine(loveLineTwo, "Você é minha escolha todos os dias e sempre será", 42);
   });
 }
 
@@ -132,7 +132,7 @@ document.querySelectorAll("[data-topic]").forEach((button, index) => {
     button.classList.add("active");
     topicImage.classList.remove("is-missing");
     topicImage.src = button.dataset.photo;
-    topicImage.alt = `Foto do topico ${button.dataset.topic}`;
+    topicImage.alt = `Foto do tópico ${button.dataset.topic}`;
     topicText.textContent = button.dataset.text;
   });
 });
@@ -146,16 +146,16 @@ const versePopover = document.querySelector("#versePopover");
 const versePopupText = document.querySelector("#versePopupText");
 const verses = [
   {
-    text: '"Acima de tudo, porem, revistam-se do amor, que e o elo perfeito."',
+    text: '"Acima de tudo, porém, revistam-se do amor, que é o elo perfeito."',
     cite: "Colossenses 3:14",
   },
   {
-    text: '"O amor e paciente, o amor e bondoso."',
-    cite: "1 Corintios 13:4",
+    text: '"O amor é paciente, o amor é bondoso."',
+    cite: "1 Coríntios 13:4",
   },
   {
-    text: '"Assim, permanecem agora estes tres: a fe, a esperanca e o amor."',
-    cite: "1 Corintios 13:13",
+    text: '"Assim, permanecem agora estes três: a fé, a esperança e o amor."',
+    cite: "1 Coríntios 13:13",
   },
 ];
 

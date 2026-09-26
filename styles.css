@@ -37,9 +37,11 @@ button {
 .story-shell {
   min-height: 100vh;
   min-height: 100svh;
+  min-height: 100dvh;
   display: grid;
-  place-items: center;
-  padding: 28px;
+  justify-items: center;
+  align-items: start;
+  padding: 28px 28px 86px;
   position: relative;
   isolation: isolate;
 }
@@ -88,9 +90,9 @@ button {
 
 .stage {
   width: min(920px, 100%);
-  max-height: calc(100svh - 96px);
-  overflow: auto;
   min-height: min(720px, calc(100svh - 104px));
+  min-height: min(720px, calc(100dvh - 104px));
+  overflow: visible;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -330,14 +332,15 @@ h1,
 h2 {
   margin: 0;
   max-width: 12ch;
-  font-size: clamp(2.55rem, 8vw, 5.8rem);
-  line-height: 0.9;
+  font-size: clamp(2.2rem, 7vw, 5.2rem);
+  line-height: 0.96;
   letter-spacing: 0;
+  overflow-wrap: anywhere;
 }
 
 h2 {
   max-width: 13ch;
-  font-size: clamp(2.25rem, 6.8vw, 4.8rem);
+  font-size: clamp(2rem, 6vw, 4.35rem);
 }
 
 p {
@@ -534,9 +537,9 @@ blockquote {
 .topic-layout,
 .reminds-layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(280px, 1.1fr);
+  grid-template-columns: minmax(0, 0.85fr) minmax(260px, 1.15fr);
   gap: 18px;
-  align-items: stretch;
+  align-items: start;
 }
 
 .topic-buttons {
@@ -571,6 +574,7 @@ blockquote {
   box-shadow:
     inset 0 0 0 1px rgba(255, 247, 241, 0.08),
     0 18px 44px rgba(0, 0, 0, 0.24);
+  align-self: start;
 }
 
 .topic-photo img {
@@ -589,7 +593,7 @@ blockquote {
 }
 
 .topic-photo figcaption {
-  min-height: 70px;
+  min-height: 0;
   padding: 18px 12px 12px;
   color: var(--ink);
   font-size: 1.1rem;
@@ -601,7 +605,6 @@ blockquote {
   width: min(1080px, 100%);
   justify-content: flex-start;
   overflow-x: hidden;
-  overflow-y: auto;
   padding-bottom: 92px;
 }
 
@@ -666,10 +669,11 @@ blockquote {
 .finale {
   width: min(980px, 100%);
   min-height: min(620px, calc(100svh - 104px));
+  min-height: min(620px, calc(100dvh - 104px));
   justify-content: center;
   align-items: center;
   gap: 14px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .final-video-card {
@@ -997,6 +1001,7 @@ cite {
 
   .stage {
     width: min(100%, 760px);
+    justify-content: flex-start;
   }
 
   .media-card,
@@ -1012,9 +1017,10 @@ cite {
   }
 
   .stage {
-    max-height: calc(100svh - 96px);
     min-height: calc(100svh - 112px);
+    min-height: calc(100dvh - 112px);
     padding: 28px 22px;
+    gap: 18px;
   }
 
   .finale {
@@ -1049,6 +1055,8 @@ cite {
   h1,
   h2 {
     max-width: 100%;
+    font-size: clamp(2rem, 11vw, 3.25rem);
+    line-height: 1;
   }
 
   .photo-grid,
@@ -1089,6 +1097,7 @@ cite {
 
   .stage {
     padding-inline: 14px;
+    gap: 16px;
   }
 
   .media-card,
@@ -1100,5 +1109,38 @@ cite {
   .media-card img,
   .topic-photo img {
     border-radius: 4px;
+  }
+}
+
+@media (max-width: 340px) {
+  .story-shell {
+    padding: 10px 8px 72px;
+  }
+
+  .stage {
+    padding: 22px 12px;
+  }
+
+  h1,
+  h2 {
+    font-size: clamp(1.75rem, 10.5vw, 2.45rem);
+  }
+
+  p,
+  blockquote,
+  .topic-photo figcaption {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .primary,
+  .topic-buttons button {
+    min-height: 44px;
+    padding-inline: 14px;
+    font-size: 0.84rem;
+  }
+
+  .elapsed div {
+    min-height: 108px;
   }
 }
